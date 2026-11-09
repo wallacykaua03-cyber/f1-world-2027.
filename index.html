@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F1 World 2027</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#101014;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+header{
+  background:#e10600;
+  padding:22px;
+  text-align:center;
+}
+header h1{font-size:30px}
+header p{margin-top:6px}
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  background:#202026;
+  padding:14px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:6px;
+}
+nav a:hover{background:#e10600}
+.container{max-width:1100px;margin:auto;padding:20px}
+.hero{
+  background:linear-gradient(120deg,#e10600,#410000);
+  padding:35px 20px;
+  border-radius:14px;
+  margin:20px 0;
+}
+.hero h2{font-size:30px;margin-bottom:10px}
+.section-title{
+  margin:30px 0 18px;
+  border-left:5px solid #e10600;
+  padding-left:12px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+.card{
+  background:#202026;
+  border-radius:12px;
+  padding:18px;
+  border-bottom:4px solid var(--team);
+}
+.card h3{margin:10px 0}
+.symbol{
+  font-size:35px;
+  font-weight:bold;
+  color:var(--team);
+}
+.card p{color:#c9c9c9;margin-top:7px}
+.tag{
+  display:inline-block;
+  background:#383840;
+  padding:6px 9px;
+  border-radius:6px;
+  margin-top:10px;
+  font-size:12px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#202026;
+  border-radius:10px;
+  overflow:hidden;
+}
+th,td{
+  padding:14px;
+  text-align:left;
+  border-bottom:1px solid #383840;
+}
+th{background:#e10600}
+.note{
+  background:#25252c;
+  padding:15px;
+  border-radius:10px;
+  color:#ddd;
+  line-height:1.5;
+}
+footer{
+  background:#202026;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏎️ F1 WORLD 2027</h1>
+  <p>O mundo da Fórmula 1 em um só lugar</p>
+</header>
+
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#equipes">Equipes</a>
+  <a href="#pilotos">Pilotos</a>
+  <a href="#calendario">Calendário</a>
+</nav>
+
+<div class="container">
+
+<section class="hero" id="inicio">
+  <h2>FÓRMULA 1 2027</h2>
+  <p>Notícias, equipes, pilotos e corridas da maior categoria do automobilismo.</p>
+  <p style="margin-top:15px">🏁 Temporada 2027</p>
+</section>
+
+<h2 class="section-title" id="equipes">🏁 Equipes</h2>
+<div class="grid" id="teamGrid"></div>
+
+<h2 class="section-title" id="pilotos">🏆 Pilotos</h2>
+<div class="grid" id="driverGrid"></div>
+
+<h2 class="section-title" id="calendario">📅 Calendário 2027</h2>
+<div class="note">
+  O calendário oficial e as datas de cada etapa devem ser confirmados e atualizados conforme os anúncios da FIA e da Fórmula 1.
+</div>
+<br>
+<table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Grande Prêmio</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody id="raceTable"></tbody>
+</table>
+
+</div>
+
+<footer>
+  <p>F1 WORLD 2027</p>
+  <p>Site de fãs de Fórmula 1 • 2027</p>
+</footer>
+
+<script>
+const teams = [
+ ["McLaren","#ff8000","MCL"],
+ ["Ferrari","#e10600","FER"],
+ ["Red Bull","#3671c6","RBR"],
+ ["Mercedes","#00d2be","MER"],
+ ["Aston Martin","#00665e","AM"],
+ ["Alpine","#0090ff","ALP"],
+ ["Williams","#005aff","WIL"],
+ ["Racing Bulls","#6692ff","RB"],
+ ["Haas","#b6babd","HAS"],
+ ["Audi","#bb0000","AUD"],
+ ["Cadillac","#d6c49a","CAD"]
+];
+
+const drivers = [
+ ["Max Verstappen","Red Bull"],
+ ["Lando Norris","McLaren"],
+ ["Charles Leclerc","Ferrari"],
+ ["Lewis Hamilton","Ferrari"],
+ ["George Russell","Mercedes"],
+ ["Oscar Piastri","McLaren"],
+ ["Fernando Alonso","Aston Martin"],
+ ["Carlos Sainz","Williams"]
+];
+
+const teamGrid = document.getElementById("teamGrid");
+
+teams.forEach(team=>{
+  teamGrid.innerHTML += `
+    <div class="card" style="--team:${team[1]}">
+      <div class="symbol">${team[2]}</div>
+      <h3>${team[0]}</h3>
+      <p>Equipe de Fórmula 1</p>
+      <span class="tag">Temporada 2027 a confirmar</span>
+    </div>
+  `;
+});
+
+const driverGrid = document.getElementById("driverGrid");
+
+drivers.forEach(driver=>{
+  driverGrid.innerHTML += `
+    <div class="card" style="--team:#e10600">
+      <div class="symbol">🏎️</div>
+      <h3>${driver[0]}</h3>
+      <p>Equipe: ${driver[1]}</p>
+      <span class="tag">Lista ilustrativa</span>
+    </div>
+  `;
+});
+
+const races = [
+ "Austrália","China","Japão","Bahrein",
+ "Arábia Saudita","Miami","Canadá","Mônaco",
+ "Barcelona","Áustria","Grã-Bretanha","Bélgica",
+ "Hungria","Holanda","Itália","Azerbaijão",
+ "Singapura","Estados Unidos","México",
+ "São Paulo","Las Vegas","Catar","Abu Dhabi"
+];
+
+const raceTable = document.getElementById("raceTable");
+
+races.forEach((race,index)=>{
+  raceTable.innerHTML += `
+    <tr>
+      <td>${index+1}</td>
+      <td>GP ${race}</td>
+      <td>A confirmar</td>
+    </tr>
+  `;
+});
+</script>
+
+</body>
+</html>
